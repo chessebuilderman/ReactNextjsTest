@@ -1,0 +1,30 @@
+'use server';
+import { UserData } from '@root/types';
+import { checkPassword } from '@root/lib/common/auth/passwordManager';
+import { PrismaClient, User } from '@prisma/client';
+const prisma = new PrismaClient();
+
+export async function CheckLogin(email: string, password: string): Promise<false | User> {
+
+    const user =
+
+    await prisma.user.findFirst({
+        where: {
+            email: email,
+        },
+    });
+    if (user) {
+        switch (await checkPassword(password, user.password)) {
+            case true: {
+                return user;
+                break;
+            }
+            default: {
+                return false;
+                break;
+            }
+        }
+    } else {
+        return false;
+    }
+}

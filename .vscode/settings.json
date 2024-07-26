@@ -1,0 +1,25 @@
+{
+    "cSpell.words": [
+        "backreference",
+        "bota",
+        "camelcase",
+        "Creds",
+        "iife",
+        "nextjs",
+        "nonblock",
+        "nonoctal",
+        "nonwords",
+        "oidc",
+        "paren",
+        "parens",
+        "pkce",
+        "plusplus",
+        "proto",
+        "tailwindcss",
+        "tseslint"
+    ],
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma"
+    }
+}
