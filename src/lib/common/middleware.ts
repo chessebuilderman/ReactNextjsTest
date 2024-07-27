@@ -2,6 +2,7 @@
 
 
 export { auth as middleware } from '@root/lib/common/auth/next-auth';
+import { auth } from '@root/lib/common/auth/next-auth';
 
 // export function middleware(request: NextRequest) {
 //   const currentUser = request.cookies.get('currentUser')?.value
@@ -19,3 +20,9 @@ export const config = {
   matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
 };
 
+export default auth((req) => {
+  if (!req.auth && req.nextUrl.pathname !== '/signin') {
+    const newUrl = new URL('/signin', req.nextUrl.origin);
+    return Response.redirect(newUrl);
+  }
+});

@@ -15,11 +15,14 @@
         "pkce",
         "plusplus",
         "proto",
+        "signin",
         "tailwindcss",
         "tseslint"
     ],
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "[prisma]": {
         "editor.defaultFormatter": "Prisma.prisma"
-    }
+    },
+    "prettier.endOfLine": "crlf",
+    "files.eol": "\r\n"
 }

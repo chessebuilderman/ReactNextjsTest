@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 
-declare type HttpStatusCode =
+export declare type HttpStatusCode =
   | 400 // Bad Request
   | 401 // Unauthorized
   | 402 // Payment Required
@@ -43,7 +43,7 @@ declare type HttpStatusCode =
   | 510 // Not Extended
   | 511; // Network Authentication Required
 
-declare interface ProductData extends mongoose.Document {
+export declare interface ProductData extends mongoose.Document {
   name: string,
   price: string,
 }
@@ -52,9 +52,9 @@ interface UserProductDataWithId extends ProductData {
   date_purchased: Date;
 }
 
-declare type UserProductData = Omit<UserProductDataWithId, 'price'>
+export declare type UserProductData = Omit<UserProductDataWithId, 'price'>
 
-declare interface UserData extends mongoose.Document {
+export declare interface UserData extends mongoose.Document {
   name?: string
   email?: string;
   email_verified?: Date;
@@ -66,7 +66,7 @@ declare interface UserData extends mongoose.Document {
   accounts: Account[]
 }
 
-declare interface Account extends mongoose.Document {
+export declare interface Account extends mongoose.Document {
   userId: mongoose.ObjectId;
   type: string;
   provider: string;
@@ -80,18 +80,18 @@ declare interface Account extends mongoose.Document {
   session_state?: string;
 }
 
-declare interface Session extends mongoose.Document {
+export declare interface Session extends mongoose.Document {
   sessionToken: string;
   userId: string;
   expires: Date;
   user: UserData
 }
 
-declare interface VerificationToken {
+export declare interface VerificationToken {
   identifier: string;
   token: string;
   expires: Date
 }
 
-declare type UserDataNoPassword = Omit<UserData, 'password'>
+export declare type UserDataNoPassword = Omit<UserData, 'password'>
 

@@ -11,9 +11,7 @@ export default function MyApp({
   return (
     <ThemeProvider>
       <SessionProvider session={session}>
-        <div>
           <Header />
-        </div>
         <Component {...pageProps} />
       </SessionProvider>
     </ThemeProvider>

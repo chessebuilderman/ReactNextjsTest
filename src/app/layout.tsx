@@ -21,8 +21,6 @@ export default function RootLayout({
   'use client';
   return (
     <html lang="en">
-      <head>
-      </head>
       <body className={inter.className}>
         {children}
       </body>

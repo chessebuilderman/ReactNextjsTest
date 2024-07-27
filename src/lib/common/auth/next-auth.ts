@@ -21,6 +21,7 @@ const prisma = new PrismaClient();
 const providers: Provider[] = [
   Discord({
     'name': 'Discord',
+    'checks': ['none'],
   }),
   /* -------------------------- Credentials will wait ------------------------- */
   // Credentials({
@@ -55,7 +56,7 @@ const providers: Provider[] = [
     name: 'PassKey',
   }),
   RobloxProvider({
-    checks: ['pkce'],
+    checks: [],
     scopes: ['profile', 'openid'],
     redirectUri: 'http://localhost:3000/api/auth/callback/roblox',
   }),
@@ -68,7 +69,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: providers,
   cookies: {
     pkceCodeVerifier: {
-      name: 'pkce-code-verifier',
+      name: 'pkce-verifier',
       options: {
         httpOnly: false,
         sameSite: 'none',
@@ -80,7 +81,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       name: 'auth-state',
       options: {
         httpOnly: false,
-        sameSite: 'strict',
+        sameSite: 'none',
         path: '/',
         secure: process.env.NODE_ENV === 'production',
       },

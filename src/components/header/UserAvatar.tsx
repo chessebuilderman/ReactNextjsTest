@@ -1,6 +1,11 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import { Badge } from '@mui/material';
+import { Session } from 'next-auth';
+
+interface UserAvatarComponentProps {
+    session: Session
+}
 
 function stringToColor(string: string) {
     let hash = 0;
@@ -32,16 +37,11 @@ function stringAvatar(name: string) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function UserAvatar({ session }: any) {
+export function UserAvatarComponent({ session }: UserAvatarComponentProps) {
     return (
         <div>
             <Badge badgeContent={Date.now()} color="error">
-                <Avatar
-                    src={
-                        session?.data.user.image ?? stringAvatar(session?.data.user.name)
-                    }
-                    alt={session?.data.user.name}
-                />
+                <Avatar src={session.user.image} />
             </Badge>
         </div>
     );

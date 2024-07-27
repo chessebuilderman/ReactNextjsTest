@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { AppBar, Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Drawer, IconButton, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -10,11 +10,11 @@ import User from './header/User';
 import { useSession } from 'next-auth/react';
 
 export default function Header() {
-    const session = useSession({ 'required': false });
-    console.log(session);
+    const { data: session, status } = useSession({ 'required': false });
+
     let sign_in;
     let sign_out;
-    switch (session.status) {
+    switch (status) {
         case 'authenticated': {
             sign_in = <User session={session} />;
             sign_out = <SignOutButton />;
@@ -61,10 +61,9 @@ export default function Header() {
                         <MenuIcon />
                     </IconButton>
 
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <Link variant="h6" href="/" component="a" sx={{ flexGrow: 1 }} color="inherit" underline="none">
                         React Next JS Test
-
-                    </Typography>
+                    </Link>
 
                     {sign_in}
                     <Typography variant="h6" color="inherit" noWrap>

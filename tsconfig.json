@@ -23,6 +23,7 @@
       }
     ],
     "paths": {
+      "*" : ["*"],
       "@root/*": [
         "src/*"
       ],
@@ -35,7 +36,7 @@
     },
     "typeRoots": [
       "@types",
-      "./src/types"
+      "src/types"
   ],
   },
   "include": [
@@ -43,9 +44,13 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "./dist/types/**/*.ts"
-, "src/lib/common/auth/CheckLogin.tsDISABLED"  ],
+    "./dist/types/**/*.ts",
+    "./types"
+    ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "buildOptions": {
+    "traceResolution": true
+  }
 }
